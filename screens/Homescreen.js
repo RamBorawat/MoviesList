@@ -46,7 +46,7 @@ export default function Homescreen({ navigation }) {
                             <Text style={styles.textTitle}>{item.Title} </Text>
                         </View>
                         <View style={styles.typeView}>
-                            <Text style={styles.typeAndYear}>  {item.Type}, {item.Year}</Text>
+                            <Text style={styles.typeAndYear}>{item.Type}, {item.Year}</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -55,8 +55,8 @@ export default function Homescreen({ navigation }) {
                     onPress={() => Linking.openURL('https://www.imdb.com/title/' + item.imdbID)}>
                     <Image
                         style={styles.imdbLogo}
-                        source={{ uri: movieDetails.Poster }
-                        } />
+                        source={require('../assets/IMDB_Logo.png')}
+                    />
                 </TouchableOpacity>
             </View>
         </View>
