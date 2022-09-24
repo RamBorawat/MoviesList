@@ -14,11 +14,6 @@ import {
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
 import Homescreen from './screens/Homescreen';
 import { LogBox } from "react-native"
 import { constants } from './Constant';
@@ -28,9 +23,7 @@ LogBox.ignoreAllLogs(true)
 export async function apiCall(pageNo, setData) {
   const resp = await fetch("http://www.omdbapi.com/?s=Batman&apikey=eeefc96f&page=" + pageNo)
   const data = await resp.json();
-  console.log(typeof data.Search);
   setData(prev => {
-    console.log(prev);
     return [...prev, ...data.Search]
   });
 }
@@ -48,18 +41,7 @@ const App: () => Node = () => {
     },
   ])
 
-  const datas = [{
-    "Title": "Batman Begins",
-    "Year": "2005",
-    "imdbID": "tt0372784",
-    "Type": "movie",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BZmUwNGU2ZmItMmRiNC00MjhlLTg5YWUtODMyNzkxODYzMmZlXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg"
-  },]
-
-  // is it?
-
   useEffect(() => {
-    console.log('useeffect run');
     apiCall(1, setData)
   }, [])
 
